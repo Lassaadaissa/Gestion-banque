@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Banque</title>
+<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+</head>
+
+<body ng-app="Banqueapp"  ng-controller="Banquecontroller">
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+   
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+ <button class="btn btn-default"  ><a href="">Gestion Banque</a></button>
+              
+              <button class="btn btn-default"  ><a href="">Gestion produit produit</a></button>
+              
+      </form>
+
+   
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+
+
+
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+<div class="panel panel-info container">
+<div class="panel panel-heading">Compte</div>
+<div class="panel panel-body">
+<form>
+<div class="form-group">
+<label> code compte :</label>
+<input type="text" ng-model="codecompte" />
+<button ng-click="chargercompte()">charger</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+<div ng-if="compte"> 
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+<div class="panel panel-info container">
+<div class="panel panel-heading">Etat du Compte</div>
+<div class="panel panel-body">
+
+<div class="form-group">
+<label> code compte :</label>
+<label> {{compte.codeCompte}}</label>
+</div>
+<div class="form-group">
+<label> solde :</label>
+<label> {{compte.solde}}</label>
+</div>
+<div class="form-group">
+<label> Decouvert :</label>
+<label> {{compte.decouvert}}</label>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+<div class="panel panel-info container">
+<div class="panel panel-heading">Opérartions</div>
+<div class="panel panel-body">
+<form>
+
+<div class="form-group">
+<label> versement :</label>
+<input type="radio" ng-model="operation.type" value="versement"  />
+<label> Retrait :</label>
+<input type="radio" ng-model="operation.type" value="retirer"  />
+<div class="form-group">
+<label> Montant :</label>
+<input type="text" ng-model="operation.montant"  />
+<button class="btn btn-primary" ng-click="saveOperation()">save</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+<div class="panel panel-info container">
+<div class="panel panel-heading">Opérations</div>
+<div class="panel panel-body">
+
+<table class=" table table-striped" >
+<thead>
+<tr>
+<th>NUM</th> <th>Montant</th><th>Date</th><th>Type</th>
+</tr>
+</thead>
+<tbody>
+
+<tr ng-repeat="p in pageoperations.content">
+<td> {{p.numeroOperation}}</td>
+<td>{{p.montant}}</td>
+<td>{{p.dateOperation}}</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="container spacer ">
+<ul class=" nav nav-pills">
+<li ng-class="{active:$index==pagecourant}" ng-repeat="p in pagesoperations track by $index" class="clickable">
+
+
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+<script type="text/javascript" src="angular-1.6.6/angular.min.js"></script>
+<script type="text/javascript" src="js/myapp.js"></script>
+</body>
+</html>
